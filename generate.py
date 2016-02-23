@@ -3,6 +3,7 @@ import random
 import sqlite3
 
 from markov import Markov
+from utils import reverse_string
 
 class RhymingMarkovGenerator(object):
     def __init__(self, markov_chain, reverse_markov_chain, corpus, lines=10):
@@ -27,7 +28,7 @@ class RhymingMarkovGenerator(object):
                     l1 = self.generate_line(self.markov_chain)
                     last_word = self.clean_word(l1.split()[-1])
                     rhymes = self.get_rhymes(last_word)
-                    break 
+                    break
 
             random.shuffle(rhymes)
 
@@ -39,7 +40,7 @@ class RhymingMarkovGenerator(object):
                     continue
 
             lines.append(l1)
-            lines.append(' '.join(reversed(l2.split())))
+            lines.append(reverse_string(l2))
 
         return '\n'.join(lines)
 

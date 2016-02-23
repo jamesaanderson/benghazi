@@ -1,9 +1,10 @@
 from collections import defaultdict
+from utils import reverse_string
 
 class Markov(object):
     def __init__(self, corpus, reverse=False):
         if reverse:
-            corpus = ' '.join(reversed(corpus.split()))
+            corpus = reverse_string(corpus)
 
         self.words = corpus.split()
 
