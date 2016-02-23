@@ -7,9 +7,13 @@ from utils import reverse_string
 
 class RhymingMarkovGenerator(object):
     def __init__(self, markov_chain, reverse_markov_chain, corpus, lines=10):
+        if lines % 2 == 0:
+            self.lines = lines
+        else:
+            raise Exception('Lines must be even')
+
         self.markov_chain = markov_chain
         self.reverse_markov_chain = reverse_markov_chain
-        self.lines = lines
         self.words = corpus.split()
 
     def generate(self):
